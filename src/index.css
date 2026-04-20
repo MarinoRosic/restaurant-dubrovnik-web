@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-lg font-medium bg-body font-primary text-grey;
+  }
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    @apply font-primary text-dark;
+  }
+  .h1 {
+    @apply text-5xl font-semibold text-white lg:text-6xl font-secondary underline decoration-red-900;
+  }
+  .h2 {
+    @apply  text-[46px] mb-4 leading-[1.1] font-secondary;
+  }
+  .h3 {
+    @apply font-extrabold italic text-[40px];
+  }
+  .h4 {
+    @apply font-extrabold italic text-[26px] text-white;
+  }
+  .h5 {
+    @apply font-medium text-[22px] text-white;
+  }
+  .pretitle {
+    @apply font-secondary font-bold text-3xl tracking-[-0.04em] mb-2 text-red-800;
+  }
+  .btn {
+    @apply h-14 w-[275px] rounded-3xl bg-myColor px-[42px] text-white text-base font-secondary font-semibold tracking-[0.02em] outline-none hover:bg-myColor transition-all duration-300 flex justify-center items-center;
+  }
+  .input {
+    @apply h-[56px] w-[380px] md:w-[550px] outline-none pl-[30px] rounded-2xl border-2 border-gray-200 font-secondary font-semibold text-base text-dark 
+  }
+  .textarea {
+    @apply  w-[380px] md:w-[550px] outline-none pl-[30px] rounded-xl border-2 border-gray-200 font-secondary font-semibold text-base text-dark 
+  }
+}
+.inputContact {
+  @apply outline-none pl-[30px] rounded-full border-2 border-gray-200 font-primary font-light text-base text-dark  placeholder:text-dark;
+}
+
+.slide-in{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #9e1d20;
+  transform-origin: right;
+}
+
+.slide-out{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #9e1d20;
+  transform-origin: left;
+}
+
+.images-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.image {
+  width: 100%;
+  height: 21rem;
+  cursor: pointer;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.divBlocker{
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  background-color: transparent;
+  z-index: 999999;
+  transform: translateZ(999999px);
+  display: none;
+}
