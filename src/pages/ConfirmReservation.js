@@ -113,7 +113,7 @@ const ConfirmReservation = () => {
   useEffect(() => {
     const getReservationData = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/reservations/${id}`);
+        const response = await fetch(`https://restorandubrovnikapi.online/reservations/${id}`);
         const data = await response.json();
         if (data !== null) {
           handleReservationStatus(data.status);
@@ -148,7 +148,7 @@ const ConfirmReservation = () => {
       theme: "colored",
     });
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/confirmreservation?id=${id}&confirmed=${confirmed}`, {
+      const response = await fetch(`https://restorandubrovnikapi.online/confirmreservation?id=${id}&confirmed=${confirmed}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' }
       });

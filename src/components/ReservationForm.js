@@ -20,7 +20,7 @@ function ReservationForm() {
     const isMobile = useIsMobile();
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/blockeddates`)
+        fetch(`https://restorandubrovnikapi.online/blockeddates`)
             .then(response => response.json())
             .then(response => {
                 if (response !== null && response !== undefined) {
@@ -188,18 +188,22 @@ function ReservationForm() {
             });
     
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/newreservation`, {
+                const response = await fetch(`https://restorandubrovnikapi.online/newreservation`, {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: { 'Content-Type': 'application/json' }
                 });
-    
+
                 if (!response.ok) {
-                    // If response is not OK (status code not in range 200-299)
-                    const errorText = await response.text();  // You can extract the response body for more info
+                    let errorMessage = `Status ${response.status}`;
+                    try {
+                        const errorText = await response.text();
+                        const parsed = JSON.parse(errorText);
+                        errorMessage = parsed.message || parsed.error || errorMessage;
+                    } catch (_) {}
                     toast.update(toastId.current, {
                         containerId: 'secondToast',
-                        render: `Reservation request failed (error: ${errorText}). Please try again.`,
+                        render: `Reservation request failed (${errorMessage}). Please try again.`,
                         type: "error",
                         isLoading: false,
                         position: "top-center",

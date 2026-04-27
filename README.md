@@ -42,8 +42,3 @@ Browser → React App → .NET Core API → MySQL (DigitalOcean)
                                      → Mailgun (email confirmations)
 ```
 
-The API base URL is configured via `.env`:
-
-```
-REACT_APP_API_URL=https://restorandubrovnikapi.online
-```
